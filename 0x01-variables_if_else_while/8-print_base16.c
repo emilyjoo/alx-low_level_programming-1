@@ -3,7 +3,7 @@
 /**
  * main - prints all the numbers of base 16
  * in lowercase
- * 
+ *
  * Description: the program uses only
  * the putchar function to print
  *
@@ -21,5 +21,5 @@ int main(void)
 		putchar(j);
 	putchar('\n');
 
-	return(0);
+	return (0);
 }

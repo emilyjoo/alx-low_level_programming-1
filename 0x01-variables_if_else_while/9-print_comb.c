@@ -8,19 +8,19 @@
  */
 int main(void)
 {
-    int i = 48;
+	int i = 48;
 
-    for(; i <= 57; i++)
-    {
-        putchar(i);
-        if (i < 57)
-            {
-                putchar(',');
-                putchar(' ');
-            }
-    }
+	for (; i <= 57; i++)
+	{
+		putchar(i);
+		if (i < 57)
+		{
+			putchar(',');
+			putchar(' ');
+		}
+	}
 
-    putchar('\n');
+	putchar('\n');
 
-    return (0);
+	return (0);
 }

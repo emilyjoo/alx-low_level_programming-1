@@ -12,12 +12,12 @@
 int main(void)
 {
 	int i, j;
-	i = j = 48;
 
+	i = j = 48;
 	for (; i <= 57; i++)
 	{
 		j = i + 1;
-		while(i < j && j <= 57)
+		while (i < j && j <= 57)
 		{
 			putchar(i);
 			putchar(j);
@@ -29,5 +29,5 @@ int main(void)
 		}
 	}
 	putchar('\n');
-	return(0);
+	return (0);
 }
