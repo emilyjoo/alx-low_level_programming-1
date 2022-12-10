@@ -12,7 +12,6 @@ betty filename.c
 
 ## COMPILATION
 Compile on Ubuntu 20.04 LTS using ```gcc```, using the options ```-Wall -Werror -Wextra -pedantic -std=gnu89```
-### Usage
 ```bash
 Wall -Werror -Wextra -pedantic -std=gnu89 filename.c -o filename
 ```
@@ -34,7 +33,7 @@ The output of the program should be:
     - if the last digit of n is 0: the string and is 0
     - if the last digit of n is less than 6 and not 0: the string and is less than 6 and not 0
   - followed by a new line
-  ```bash
+```bash
 bright@ubuntu:~/0x01$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 1-last_digit.c -o 1-last_digit
 bright@ubuntu:~/0x01$ ./1-last_digit 
 Last digit of 629438752 is 2 and is less than 6 and not 0
@@ -63,8 +62,7 @@ Last digit of 45528266 is 6 and is greater than 5
 bright@ubuntu:~/0x01$ ./1-last_digit 
 Last digit of 809065140 is 0 and is 0
 bright@ubuntu:~/0x01$
-
-  ```
+```
 
 ## [Task 2](https://github.com/Brightini/alx-low_level_programming/blob/master/0x01-variables_if_else_while/2-print_alphabet.c): This program prints the alphabet in lowercase, followed by a new line
 The program uses only the `putchar` function to print
