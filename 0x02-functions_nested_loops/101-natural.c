@@ -9,17 +9,17 @@
  */
 void natural(int n)
 {
-    int i = 0;
-    int sum = 0;
+	int i = 0;
+	int sum = 0;
 
-    for (; i < n; i++)
-    {
-        if ((i % 3 == 0) || (i % 5 == 0))
-        {
-            sum += i;
-        }
-    }
-    printf("%d\n", sum);
+	for (; i < n; i++)
+	{
+		if ((i % 3 == 0) || (i % 5 == 0))
+		{
+			sum += i;
+		}
+	}
+	printf("%d\n", sum);
 }
 
 /**
@@ -29,6 +29,6 @@ void natural(int n)
  */
 int main(void)
 {
-    natural(1024);
-    return (0);
+	natural(1024);
+	return (0);
 }
