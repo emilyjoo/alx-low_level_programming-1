@@ -5,9 +5,9 @@
  *
  * @a: (int)
  * @b: (int)
- * Return: returns sum of a and b 
+ * Return: returns sum of a and b
  */
 int add(int a, int b)
 {
-    return (a + b);
+	return (a + b);
 }
