@@ -8,16 +8,17 @@
  */
 void first_50(int n)
 {
-	int i, j, k, count;
+	long long int i, j, k;
+	int count;
 
 	count = 2;
-	printf("%d, %d, ", i = 1, j = 2);
+	printf("%llu, %llu, ", i = 1, j = 2);
 	while (count < n)
 	{
 		k = i + j;
 		if (k < 0)
 			k = -(k);
-		printf("%d", k);
+		printf("%llu", k);
 		if (count == n - 1)
 		{
 			printf("\n");
