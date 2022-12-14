@@ -8,6 +8,7 @@ int _islower(int c);
 int _isalpha(int c);
 void first_50(int n);
 void natural(int n);
+void times_table(void);
 void jack_bauer(void);
 int print_sign(int n);
 void print_to_98(int n);
