@@ -7,6 +7,7 @@ int _putchar(char);
 int _islower(int c);
 int _isalpha(int c);
 void first_50(int n);
+void first_98(int n);
 void natural(int n);
 void times_table(void);
 void jack_bauer(void);
