@@ -13,8 +13,11 @@ void more_numbers(void)
 	{
 		j = 0;
 		for (; j <= 14; j++)
-			_putchar(j);
+		{
+			if (j >= 10) /* for two digit numbers */
+				_putchar(j / 10 + '0');
+			_putchar(j % 10 + '0');
+		}
 		_putchar('\n');
 	}
-	_putchar('\n');
 }
