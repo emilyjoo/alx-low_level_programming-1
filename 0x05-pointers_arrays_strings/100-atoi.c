@@ -11,7 +11,7 @@
 int _atoi(char *s)
 {
 	int index = 0;
-	int number = 0;
+	unsigned int number = 0;
 	int mult = 1;
 	int check = 0;
 
@@ -27,7 +27,7 @@ int _atoi(char *s)
 			index++;
 		}
 		if (check == 1)
-			break; /* ensures digits coming later on aren't computed */
+			break; /* ensures digits coming after non-digits on aren't computed */
 		index++;
 	}
 	number *= mult; /* computes final sign of @number, either +ve or -ve */
