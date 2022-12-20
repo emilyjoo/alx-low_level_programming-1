@@ -1,23 +1,35 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * _atoi - converts a string to an integer
+ *
+ * @s: pointer to string
+ * Return: 0 if no number in the string
+ * otherwise return the number
+ */
 int _atoi(char *s)
 {
-	int i, num = 0;
+	int index = 0;
+	int number = 0;
+	int mult = 1;
+	int check = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
+	while (s[index])
 	{
-		if (s[i] == '-' && (s[i + 1] >= '0' && s[i + 1] <= '9'))
-			printf("-");
-		if (s[i] >= '0' && s[i] <= '9')
+		if (s[index] == '-')
+			mult *= -1; /* to ensure @number ends up with the right sign */
+
+		while (s[index] >= '0' && s[index] <= '9')
 		{
-			num = (num * 10) + (s[i] - '0');
-			if (!(s[i + 1] >= '0' && s[i + 1] <= '9'))
-				break;
+			check = 1;
+			number = (number * 10) + (s[index] - '0');
+			index++;
 		}
+		if (check == 1)
+			break; /* ensures digits coming later on aren't computed */
+		index++;
 	}
-	if (num == 0)
-		return (0);
-	else
-		return (num);
+	number *= mult; /* computes final sign of @number, either +ve or -ve */
+	return (number);
 }
