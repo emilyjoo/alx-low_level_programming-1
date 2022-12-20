@@ -15,7 +15,7 @@ void random_password(int n)
 
 	srand((unsigned int)(time(NULL)));
 
-	char password[n]; /* to store password*/
+	char *password = ""; /* to store password*/
 	char *numbers = "0123456789";
 	char *lc_letters = "abcdefghijklmnopqrstuvwxyz";
 	char *uc_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
