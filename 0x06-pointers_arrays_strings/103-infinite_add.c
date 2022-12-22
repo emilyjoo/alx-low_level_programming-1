@@ -5,7 +5,7 @@ unsigned long int to_int(char *s)
 	int i = 0;
 	unsigned long int number = 0;
 
-	for(; s[i] != '\0'; i++)
+	for (; s[i] != '\0'; i++)
 		number = (number * 10) + (s[i] - '0');
 	return (number);
 }
