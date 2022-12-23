@@ -37,7 +37,7 @@ int _strcmp(char *s1, char *s2)
 			else if (s1[i] > s2[i])
 				return (13);
 		}
-		return (-15);
+		return (-13);
 	}
 	else if (size_s1 > size_s2)
 	{
@@ -48,7 +48,7 @@ int _strcmp(char *s1, char *s2)
 			else if (s1[i] > s2[i])
 				return (13);
 		}
-		return (15);
+		return (13);
 	}
 	else if (size_s1 == size_s2)
 	{
