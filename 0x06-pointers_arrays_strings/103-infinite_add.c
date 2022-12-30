@@ -1,105 +1,56 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
- * to_string - convert array of integers to string
- *
- * @arr: array of integers
- * @size: size of int array
- * Return: pointer to string
+ * compute - adds two numbers (in string)
+ * and stores result in a char array
+ * @a: pointer to first array of numbers
+ * @i: length of @a
+ * @b: pointer to second array of numbers
+ * @j: length of @b
+ * @r: pointer to char array where result is to be stored
  */
-char *to_string(int *arr, int size)
+void compute(char *a, int i, char *b, int j, char *r)
 {
-	int i;
-	char *new_arr;
+	int sum = 0, carry = 0;
 
-	new_arr = malloc(sizeof(char) * size);
-
-	for (i = 0; i < size; i++)
-		new_arr[i] = arr[i] + '0';
-	new_arr[i] = '\0';
-	free(arr);
-	return (new_arr);
-}
-
-/**
- * compute - converts string of numbers to int array and adds them
- *
- * @n1: pointer to first string of numbers
- * @n2: pointer to second string of numbers
- * @size_of_n1: size of first string
- * @size_of_n2: size of second string
- * Return: pointer to int array
- */
-int *compute(char *n1, char *n2, int size_of_n1, int size_of_n2)
-{
-	int i, j, carry = 0, sum = 0;
-	int *a, *b, *keep;
-
-	a = malloc(sizeof(int) * size_of_n1);
-	b = malloc(sizeof(int) * size_of_n2);
-	keep = malloc(sizeof(int) * size_of_n1);
-
-	for (i = 0; n1[i] != '\0'; i++)
-		a[i] = a[i] * 10 + (n1[i] - 48);
-	for (j = 0; n2[j] != '\0'; j++)
-		b[j] = b[j] * 10 + (n2[j] - 48);
-
-	for (i = size_of_n2 - 1; i >= 0; i--)
+	r[i + 1] = '\0';
+	for (j -= 1, i -= 1; j >= 0; j--, i--)
 	{
-		sum = a[size_of_n1 - 1] + b[i] + carry;
-		keep[size_of_n1] = sum % 10;
-		carry = sum / 10;
-		size_of_n1--;
-	}
-
-	for (; size_of_n1 > 0; size_of_n1--)
-	{
-		sum = a[size_of_n1 - 1] + carry;
-		keep[size_of_n1] = sum % 10;
+		sum = (b[j] - '0') + (a[i] - '0') + carry;
+		r[i + 1] = (sum % 10) + '0';
 		carry = sum / 10;
 	}
-
-	keep[size_of_n1] = carry;
-	free(a);
-	free(b);
-	return (keep);
+	for (; i >= 0; i--)
+	{
+		sum = (a[i] - '0') + carry;
+		r[i + 1] = (sum % 10) + '0';
+		carry = sum / 10;
+	}
+	r[i + 1] = carry + '0';
 }
-
-
 
 /**
  * infinite_add - adds two numbers
- *
- * @n1: pointer to first string of numbers
- * @n2: pointer to second string of numbers
- * @r: buffer to store result
- * @size_r: size of buffer
- * Return: pointer to string
+ * @n1: first number
+ * @n2: second number
+ * @r: buffer for result
+ * @size_r: buffer size
+ * Return: address of r or 0
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, size_of_n1, size_of_n2;
-
-	/* to get size of n1 */
+	int i, j;
+	/* get length of string n1 */
 	for (i = 0; n1[i] != '\0'; i++)
 		;
-	size_of_n1 = i + 1;
-
-	/* to get size of n2 */
+	/* get length of string n2 */
 	for (j = 0; n2[j] != '\0'; j++)
 		;
-	size_of_n2 = j + 1;
-
-	if (size_of_n1 >= size_of_n2)
-		r = to_string(compute(n1, n2, size_of_n1, size_of_n2), size_of_n1);
-	else
-		r = to_string(compute(n2, n1, size_of_n2, size_of_n1), size_of_n2);
-
-	for (i = 0; r[i] != '\0'; i++)
-		;
-	if (i + 1 >= size_r)
+	if (i + 1 >= size_r || j + 1 >= size_r)
 		return (0);
-
+	if (i >= j)
+		compute(n1, i, n2, j, r);
+	else
+		compute(n2, j, n1, i, r);
 	return (r);
 }
