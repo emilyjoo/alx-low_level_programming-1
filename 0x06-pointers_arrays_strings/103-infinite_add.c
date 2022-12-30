@@ -8,8 +8,9 @@
  * @b: pointer to second array of numbers
  * @j: length of @b
  * @r: pointer to char array where result is to be stored
+ * Return: pointer to char array where result is to be stored
  */
-void compute(char *a, int i, char *b, int j, char *r)
+char *compute(char *a, int i, char *b, int j, char *r)
 {
 	int sum = 0, carry = 0;
 
@@ -20,13 +21,18 @@ void compute(char *a, int i, char *b, int j, char *r)
 		r[i + 1] = (sum % 10) + '0';
 		carry = sum / 10;
 	}
-	for (; i >= 0; i--)
-	{
-		sum = (a[i] - '0') + carry;
-		r[i + 1] = (sum % 10) + '0';
-		carry = sum / 10;
-	}
+	/* prevent overflow */
+	if (carry == 0)
+		return (r + 1);
+	if (carry > 0)
+		for (; i >= 0; i--)
+		{
+			sum = (a[i] - '0') + carry;
+			r[i + 1] = (sum % 10) + '0';
+			carry = sum / 10;
+		}
 	r[i + 1] = carry + '0';
+	return (r);
 }
 
 /**
@@ -49,8 +55,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	if (i + 1 >= size_r || j + 1 >= size_r)
 		return (0);
 	if (i >= j)
-		compute(n1, i, n2, j, r);
+		r = compute(n1, i, n2, j, r);
 	else
-		compute(n2, j, n1, i, r);
+		r = compute(n2, j, n1, i, r);
 	return (r);
 }
