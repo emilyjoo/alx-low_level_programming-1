@@ -9,15 +9,14 @@
  */
 char *_strchr(char *s, char c)
 {
-	int i = 0, size;
-
-	for (i = 0; s[i] != '\0'; i++)
-		;
-	size = i + 1; /* to include terminating null byte */
-	for (; s[i] <= size; i++)
+	while (*s)
 	{
-		if (s[i] == c)
-			return (s + i);
+		if (*s != c)
+			s++;
+		else
+			return (s);
 	}
+	if (c == '\0')
+		return (s); /* at this point, the value of s is '\0' */
 	return (0);
 }
