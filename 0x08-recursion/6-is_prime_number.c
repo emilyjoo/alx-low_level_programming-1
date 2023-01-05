@@ -24,14 +24,10 @@ int compute_prime(int n, int i)
  */
 int is_prime_number(int n)
 {
-	int i;
 
 	if (n <= 0 || n == 1)
 		return (0);
 	if (n == 2)
 		return (1);
-	i = compute_prime(n, 2);
-	if (i == 0)
-		return (0);
-	return (1);
+	return (compute_prime(n, 2));
 }
