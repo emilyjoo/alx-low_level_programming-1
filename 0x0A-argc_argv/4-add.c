@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	{
 		for (i = argc - 1; i > 0; i--)
 		{
-			if (strtol(argv[i], NULL, 10)) /* checks if argument is a number*/
+			if (strtol(argv[i], NULL, 10) && atoi(argv[i]) > 0) /* checks if argument is a number*/
 				sum += atoi(argv[i]);
 			else
 			{
