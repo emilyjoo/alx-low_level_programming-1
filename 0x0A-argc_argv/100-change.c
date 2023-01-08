@@ -35,4 +35,5 @@ int main(int argc, char **argv)
 		coin++; /* incremented every time a change is made */
 	}
 	printf("%d\n", coin);
+	exit(EXIT_SUCCESS);
 }
