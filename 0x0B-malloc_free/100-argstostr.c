@@ -58,7 +58,7 @@ char *argstostr(int ac, char **av)
 	for (; i < ac; i++)
 		total_length += _strlen(av[i]);
 
-	ptr = malloc(sizeof(char) * total_length + i);/* +i to include null char */
+	ptr = malloc(sizeof(char) * (total_length + i + 1));/* +i to include null char */
 	if (!ptr)
 		return (NULL);
 
