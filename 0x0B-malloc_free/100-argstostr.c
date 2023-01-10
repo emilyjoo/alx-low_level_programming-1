@@ -57,8 +57,8 @@ char *argstostr(int ac, char **av)
 	/* to get total length of arguments */
 	for (; i < ac; i++)
 		total_length += _strlen(av[i]);
-
-	ptr = malloc(sizeof(char) * (total_length + i + 1));/* +i to include null char */
+	/* + i + 1 to include null char */
+	ptr = malloc(sizeof(char) * (total_length + i + 1));
 	if (!ptr)
 		return (NULL);
 
