@@ -10,13 +10,20 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *ptr;
+	size_t i, array_size;
+
+	array_size = nmemb * size;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	ptr = malloc(sizeof(char) * nmemb * size);
+	ptr = malloc(array_size);
 	if (!ptr)
 		return (NULL);
+
+	/* set element in memory to 0 */
+	for (i = 0; i < array_size; i++)
+		ptr[i] = 0;
 
 	return (ptr);
 }
