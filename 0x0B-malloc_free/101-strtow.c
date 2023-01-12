@@ -54,7 +54,7 @@ char **strtow(char *str)
 			/* j is the length of the word, including null terminator */
 			for (k = i, j = 1; str[k] != ' ' && str[k] != '\0'; k++, j++)
 				;
-			ptr[offset] = malloc(sizeof(int) * j);
+			ptr[offset] = malloc(sizeof(char) * j);
 			if (!ptr[offset])
 			{
 				for (k = 0; k < num_words; k++)
