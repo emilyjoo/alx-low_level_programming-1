@@ -15,7 +15,6 @@ void _strcpy(char *dest, char *src)
 	dest[i] = '\0';
 }
 
-
 /**
  * _strlen - computes the length of a string
  *
@@ -39,31 +38,34 @@ int _strlen(char *s)
  * @owner: owner of new dog
  *
  * Return: NULL if function fails, otherwise, a pointer to the new dog
-*/
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *newDog;
 	char *name_copy, *owner_copy;
 
-	/* + 1 for null terminator */
-	name_copy = malloc(_strlen(name) + 1);
-	if (!name_copy)
-		return (NULL);
-	owner_copy = malloc(_strlen(owner) + 1);
-	if (!owner_copy)
-		return (NULL);
+	if (name && age && owner)
+	{
+		/* + 1 for null terminator */
+		name_copy = malloc(_strlen(name) + 1);
+		if (!name_copy)
+			return (NULL);
+		owner_copy = malloc(_strlen(owner) + 1);
+		if (!owner_copy)
+			return (NULL);
 
-	_strcpy(name_copy, name);
-	_strcpy(owner_copy, owner);
+		_strcpy(name_copy, name);
+		_strcpy(owner_copy, owner);
 
-	newDog = malloc(sizeof(dog_t));
-	if (!newDog)
-		return (NULL);
+		newDog = malloc(sizeof(dog_t));
+		if (!newDog)
+			return (NULL);
 
-	/* initialise values for new dog */
-	newDog->name = name_copy;
-	newDog->age = age;
-	newDog->owner = owner_copy;
+		/* initialise values for new dog */
+		newDog->name = name_copy;
+		newDog->age = age;
+		newDog->owner = owner_copy;
+	}
 
 	return (newDog);
 }
