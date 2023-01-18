@@ -27,15 +27,13 @@ int main(int argc, char **argv)
 	/* if a user tries to divide by 0 */
 	if ((strcmp(op, "/") == 0 || strcmp(op, "%") == 0) && num2 == 0)
 	{
-		printf("Error!!\n");
+		printf("Error\n");
 		exit(100);
 	}
 
 	fptr = get_op_func(op);
 	if (fptr != NULL)
 		printf("%d\n", fptr(num1, num2));
-	else
-		printf("Invalid\n");
 
 	return (0);
 }
