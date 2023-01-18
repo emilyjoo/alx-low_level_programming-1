@@ -7,11 +7,14 @@
  * @array: an array of integers
  * @size: size of @array
  * @action: pointer to function to be used
-*/
+ */
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	size_t i = 0;
 
-	for (; i < size; i++)
-		action(array[i]);
+	if (size > 0 && array && action)
+	{
+		for (; i < size; i++)
+			action(array[i]);
+	}
 }
