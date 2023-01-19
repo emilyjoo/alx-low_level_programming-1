@@ -32,10 +32,12 @@ void print_all(const char *const format, ...)
 			break;
 		case 's':
 			temp = va_arg(args, char *);
-			if (temp)
-				printf("%s", temp);
-			else
+			if (!temp)
+			{
 				printf("(nil)"); /* if argument is NULL */
+				break;
+			}
+			printf("%s", temp);
 			break;
 		default:
 			check = 1;
