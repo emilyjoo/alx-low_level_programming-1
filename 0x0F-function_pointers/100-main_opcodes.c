@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "function_pointers.h"
 
 /**
  * main - prints the opcode of its main function
@@ -10,9 +11,7 @@
 int main(int argc, char **argv)
 {
 	int i = 0, bytes;
-	void *main_add;
 	unsigned char *opcodes;
-	char *separator = " ";
 
 	if (argc != 2)
 	{
@@ -25,18 +24,16 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(2);
 	}
-	/* get the address of the main function */
-	main_add = (void *)main;
 
-	/* get opcodes of main function */
-	opcodes = (unsigned char *)main_add;
+	/* get opcodes of main function using address of main function */
+	opcodes = (unsigned char *)main;
 
 	/* print 'bytes' opcode */
 	for (; i < bytes; ++i)
 	{
 		printf("%02x", opcodes[i]);
 		if (i < bytes - 1)
-			printf("%s", separator);
+			printf("%s", " ");
 	}
 	printf("\n");
 	return (0);
