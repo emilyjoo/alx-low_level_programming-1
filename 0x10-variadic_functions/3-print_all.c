@@ -12,22 +12,22 @@ void print_all(const char *const format, ...)
 	int i = 0, check;
 	char *temp;
 
-	if (!format)
-		return;
 	va_start(args, format);
 
-	while (format[i])
+	while (format[i] && format)
 	{
 		check = 0;
 		switch (format[i])
 		{
 		case 'c':
+			/* (char) to prevent char from promoting to int */
 			printf("%c", (char)va_arg(args, int));
 			break;
 		case 'i':
 			printf("%d", va_arg(args, int));
 			break;
 		case 'f':
+			/* (float) to prevent float from promoting to double */
 			printf("%f", (float)va_arg(args, double));
 			break;
 		case 's':
