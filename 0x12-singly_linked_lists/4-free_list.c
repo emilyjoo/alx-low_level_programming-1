@@ -17,7 +17,7 @@ void free_list(list_t *head)
 	old = head;
 	new = head;
 
-	while (new->next)
+	while (new)
 	{
 		new = new->next; /* now points to the next node */
 		free(old->str); /* frees malloc'ed of previous node */
