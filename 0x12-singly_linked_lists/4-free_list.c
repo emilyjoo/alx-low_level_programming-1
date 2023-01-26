@@ -14,7 +14,9 @@ void free_list(list_t *head)
 	temp = head;
 	/* free malloc'ed string */
 	while (temp->next)
+	{
 		free(temp->str);
-
-	free(temp);
+		free(temp);
+		temp = temp->next;
+	}
 }
