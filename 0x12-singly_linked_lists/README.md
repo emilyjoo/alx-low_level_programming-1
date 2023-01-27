@@ -27,13 +27,7 @@ Test files can be found [here](https://github.com/Brightini/alx-low_level_progra
 - [100-first.c](https://github.com/Brightini/alx-low_level_programming/blob/master/0x12-singly_linked_lists/100-first.c): prints ``You're beat! and yet, you must allow,\nI bore my house upon my back!\n`` before the ``main`` function is executed. It makes use of ``__attribute__((constructor))`` which is a function attribute that specifies that a function should be executed before the ``main`` function.
 
 - [101-hello_holberton.asm](https://github.com/Brightini/alx-low_level_programming/blob/master/0x12-singly_linked_lists/101-hello_holberton.asm): a 64-bit program in assembly that prints ``Hello, Holberton``
-The program is compiled using ``nasm`` and ``gcc`` The ``section .data`` defines the message to be printed, and the ``section .text`` contains the ``main`` function.
-
-The ``main`` function starts by setting up the stack and base pointer using the ``push`` and ``mov`` instructions. Then, it loads the address of the message into the ``rdi`` register using the ``lea`` instruction. This is the first argument that ``printf`` expects for the format string.
-
-It then calls the ``printf`` function, which prints the message to the console. After that, it calls the ``exit`` function to clean up and exit the program.
-
-It is important to note that the ``printf`` and ``exit`` functions are part of the C library, so they are included the program using the ``extern`` keyword.
+The program is compiled using ``nasm`` and ``gcc`` The ``section .data`` defines the message to be printed, and the ``section .text`` contains the ``main`` function. The ``main`` function starts by setting up the stack and base pointer using the ``push`` and ``mov`` instructions. Then, it loads the address of the message into the ``rdi`` register using the ``lea`` instruction. This is the first argument that ``printf`` expects for the format string. It then calls the ``printf`` function, which prints the message to the console. After that, it calls the ``exit`` function to clean up and exit the program. It is important to note that the ``printf`` and ``exit`` functions are part of the C library, so they are included the program using the ``extern`` keyword.
 
 
 # Author
