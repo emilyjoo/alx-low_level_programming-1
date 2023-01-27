@@ -20,8 +20,8 @@ void free_list(list_t *head)
 	while (new)
 	{
 		new = new->next; /* now points to the next node */
-		free(old->str); /* frees malloc'ed of previous node */
-		free(old); /* frees the of previous node */
-		old = new; /* then assign new node to old to be free */
+		free(old->str); /* frees malloc'ed string of previous node */
+		free(old); /* frees the previous node */
+		old = new; /* then assign new node to old to be free also */
 	}
 }
