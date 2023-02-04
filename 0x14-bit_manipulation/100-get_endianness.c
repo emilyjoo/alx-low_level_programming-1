@@ -7,9 +7,9 @@
 */
 int get_endianness(void)
 {
-	int word = 0x0001;
+	int i = 1;
 	char *byte;
 
-	byte = (char *)&word;
-	return (byte[0] ? 0 : 1);
+	byte = (char *)&i; /* set byte to address of i */
+	return ((int)*byte); /* returns 0 if little, else 1 */
 }
