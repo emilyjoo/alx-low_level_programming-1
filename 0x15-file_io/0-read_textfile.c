@@ -21,8 +21,8 @@ int _putchar(char c)
 */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int i, fd;
-	ssize_t num_byte;
+	int fd;
+	ssize_t i, num_byte;
 	char *buf;
 
 	if (!filename)
