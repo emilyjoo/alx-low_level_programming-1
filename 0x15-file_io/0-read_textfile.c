@@ -1,18 +1,6 @@
 #include "main.h"
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
  * read_textfile - reads a text file and prints it to the POSIX standard output
  *
  * @filename: char pointer to textfile
@@ -22,7 +10,7 @@ int _putchar(char c)
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
-	ssize_t i, num_byte;
+	ssize_t num_byte, num_read;
 	char *buf;
 
 	if (!filename)
@@ -37,9 +25,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	num_byte = read(fd, buf, letters);
-	for (i = 0; i < num_byte; i++)
-		_putchar(buf[i]);
+	num_read = write(STDOUT_FILENO, buf, num_byte);
+	if (num_read == -1)
+		return (0);
 
+	free(buf);
 	close(fd);
-	return (i);
+	return (num_read);
 }
