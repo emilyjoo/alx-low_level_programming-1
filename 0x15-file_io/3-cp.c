@@ -7,7 +7,7 @@
  * @fd_s: filedes for source file
  * @fd_d: filedes for destination file
  * @av: (char **) pointer to command line argument
-*/
+ */
 void print_error_message(int fd_s, int fd_d, char **av)
 {
 	if (fd_s == -1)
@@ -17,7 +17,6 @@ void print_error_message(int fd_s, int fd_d, char **av)
 	}
 	if (fd_d == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
-
 }
 
 /**
@@ -26,11 +25,11 @@ void print_error_message(int fd_s, int fd_d, char **av)
  * @ac: (int) number of argument from command line
  * @av: (char **) pointer to command line argument
  * Return: 0 on success, otherwise, any other number
-*/
+ */
 int main(int ac, char **av)
 {
-	int fd_s, fd_d;
-	ssize_t r_status, w_status, cs_status, cd_status;
+	int num_read = 1024, fd_s, fd_d;
+	ssize_t w_status, cs_status, cd_status;
 	char buf[1024];
 
 	if (ac != 3)
@@ -42,14 +41,18 @@ int main(int ac, char **av)
 	fd_d = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	print_error_message(fd_s, fd_d, av);
 
-	r_status = read(fd_s, buf, 1024);
-	if (r_status == -1)
-		print_error_message(-1, 0, av);
+	while (num_read > 0)
+	{
+		/* at the EOF refered to by fd_s, read() will return 0 */
+		num_read = read(fd_s, buf, 1024);
+		if (num_read == -1)
+			print_error_message(-1, 0, av);
 
-	/* writing to destination file */
-	w_status = write(fd_d, buf, 1024);
-	if (w_status == -1)
-		print_error_message(0, -1, av);
+		/* writing to destination file */
+		w_status = write(fd_d, buf, num_read);
+		if (w_status == -1)
+			print_error_message(0, -1, av);
+	}
 
 	/* close status for source file */
 	cs_status = close(fd_s);
