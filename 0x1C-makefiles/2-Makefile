@@ -5,6 +5,5 @@ NAME=school
 SRC=$(NAME) main.c school.c
 OBJ=$(wildcard *.o)
 
-
 school:
 	$(CC) -o $(SRC) $(OBJ)
