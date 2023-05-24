@@ -1,4 +1,4 @@
-all : school
+all: school
 
 CC=gcc
 SRC=*.c
