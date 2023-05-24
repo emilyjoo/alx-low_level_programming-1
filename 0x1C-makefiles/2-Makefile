@@ -1,9 +1,16 @@
-all: school
-
 CC=gcc
 NAME=school
-SRC=$(NAME) main.c school.c
-OBJ=$(wildcard *.o)
+SRC=$(wildcard *.c) # gets the list of all C source files
+OBJ=$(SRC: .c=.o) # defines the corresponding object file for each source file
 
-school:
-	$(CC) -o $(SRC) $(OBJ)
+all: $(NAME) # defines target name
+
+# create executable file
+# $@ represents the target name (executable name)
+# $^ represents the object files of the target
+$(NAME): $(OBJ)
+	$(CC) -o $@ $^
+
+# compile .c files into object files
+%.o: %.c
+	$(CC) -c $<
