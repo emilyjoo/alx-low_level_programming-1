@@ -1,23 +1,19 @@
+# A complete advance makefile
+
 CC=gcc
-NAME=school
 SRC=main.c school.c
-OBJ=$(SRC:.c=.o) # defines the corresponding object file for each source file
-CFLAGS=-Wall -Werror -Wextra -pedantic
-CUSTOM_FLAGS := $(CFLAGS)
+OBJ=$(SRC:.c=.o)
+NAME=school
+CFLAGS=-Wall -Werror -Wextra -pedantic -std=gnu89
 
-all:$(SRC) $(NAME)
+.PHONY: all clean oclean fclean re
 
-# create executable file
-# $@ represents the target name (executable name)
-# $^ represents the object files of the target
-$(NAME): $(OBJ) m.h
-	$(CC) $(CUSTOM_FLAGS) -o $@ $^
+all:  m.h $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-# deletes all Emacs and Vim temporary files along with the executable
 clean:
 	$(RM) *~ $(NAME)
 
-# deletes object files
 oclean:
 	$(RM) $(OBJ)
 
