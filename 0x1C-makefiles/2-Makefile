@@ -10,7 +10,3 @@ all: $(NAME) # defines target name
 # $^ represents the object files of the target
 $(NAME): $(OBJ)
 	$(CC) -o $@ $^
-
-# compile .c files into object files
-%.o: %.c
-	$(CC) -c $<
