@@ -1,6 +1,6 @@
 CC=gcc
 NAME=school
-SRC=$(wildcard *.c) # gets the list of all C source files
+SRC=main.c school.c
 OBJ=$(SRC: .c=.o) # defines the corresponding object file for each source file
 
 all: $(NAME) # defines target name
