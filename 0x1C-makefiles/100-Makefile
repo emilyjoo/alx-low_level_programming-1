@@ -11,15 +11,15 @@ all:$(SRC) $(NAME)
 # $@ represents the target name (executable name)
 # $^ represents the object files of the target
 $(NAME): $(OBJ) m.h
-	$(CC) $(CUSTOM_FLAGS) -o $@ $^
+        $(CC) $(CUSTOM_FLAGS) -o $@ $^
 
 # deletes all Emacs and Vim temporary files along with the executable
 clean:
-	$(RM) *~ $(NAME)
+        $(RM) *~ $(NAME)
 
 # deletes object files
 oclean:
-	$(RM) $(OBJ)
+        $(RM) $(OBJ)
 
 fclean: clean oclean
 
