@@ -1,5 +1,6 @@
 CC=gcc
 NAME=school
+
 SRC=main.c school.c
 OBJ=$(SRC:.c=.o) # defines the corresponding object file for each source file
 RM=rm -rf
@@ -19,6 +20,7 @@ clean:
 oclean:
 	$(RM) $(OBJ)
 
-fclean: clean oclean
+fclean:
+	$(RM) *~ $(NAME) $(OBJ)
 
 re: oclean all
