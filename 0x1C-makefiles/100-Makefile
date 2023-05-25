@@ -3,7 +3,6 @@ NAME=school
 SRC=main.c school.c
 OBJ=$(SRC:.c=.o) # defines the corresponding object file for each source file
 CFLAGS=-Wall -Werror -Wextra -pedantic
-HEADER=m.h
 CUSTOM_FLAGS := $(CFLAGS)
 
 all:$(SRC) $(NAME)
@@ -11,7 +10,7 @@ all:$(SRC) $(NAME)
 # create executable file
 # $@ represents the target name (executable name)
 # $^ represents the object files of the target
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ) m.h
 	$(CC) $(CUSTOM_FLAGS) -o $@ $^
 
 # deletes all Emacs and Vim temporary files along with the executable
@@ -24,4 +23,4 @@ oclean:
 
 fclean: clean oclean
 
-re: oclean all
+re: fclean all
