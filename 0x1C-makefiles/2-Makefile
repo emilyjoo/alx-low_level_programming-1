@@ -8,4 +8,4 @@ all: $(SRC) $(NAME)
 # $@ represents the target name (executable name)
 # $^ represents the object files of the target
 $(NAME): $(OBJ)
-	$(CC) -o $@ $(OBJ)
+	$(CC) $(OBJ) -o $@
